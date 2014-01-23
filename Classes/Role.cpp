@@ -58,7 +58,7 @@ void Role::init()
     speedClimb_ = ROLE_CLIMB_SPEED;
     
     actions_.resize(ACTION_COUNT, 0);
-    RepeatForever* action = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation("role_run")));
+    RepeatForever* action = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_move.c_str())));
     actions_.at(ACTION_MOVE) = action;
     CC_SAFE_RETAIN(action);
     
