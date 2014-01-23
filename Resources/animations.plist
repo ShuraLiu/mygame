@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>animations</key>
+	<dict>
+		<key>role_run</key>
+		<dict>
+			<key>delay</key>
+			<real>0.0625</real>
+			<key>frames</key>
+			<array>
+				<string>walk_01.png</string>
+				<string>walk_02.png</string>
+				<string>walk_03.png</string>
+				<string>walk_04.png</string>
+			</array>
+		</dict>
+	</dict>
+</dict>
+</plist>
