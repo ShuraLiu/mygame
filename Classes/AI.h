@@ -34,6 +34,7 @@ public:
     void setPosition(const cocos2d::Point& pos);
     void addAIToLayer(cocos2d::Layer* layer);
     void stop();
+    void attack();
     
 public:
     enum Action

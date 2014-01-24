@@ -10,6 +10,7 @@
 #include "config.h"
 #include "AIStateIdle.h"
 #include "AIStateMove.h"
+#include "AIStateAttack.h"
 #include "Utils.h"
 #include "ActorProperty.h"
 
@@ -18,6 +19,7 @@ USING_NS_CC;
 AI::AI(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction, float speed, float idleDuration, float moveDistance)
 : pAIStateIdle_(new AIStateIdle(this))
 , pAIStateMove_(new AIStateMove(this))
+, pAIStateAttack_(new AIStateAttack(this))
 , pAISprite_(0)
 , speedMove_(speed)
 , idleDuration_(idleDuration)
@@ -60,6 +62,9 @@ void AI::init(const cocos2d::Point& initialPosition, const std::string& directio
     RepeatForever* idle = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_idle.c_str())));
     actions_.at(ACTION_IDLE) = idle;
     CC_SAFE_RETAIN(idle);
+    Animate* attack = Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_attack.c_str()));
+    actions_.at(ACTION_ATTACK) = attack;
+    CC_SAFE_RETAIN(attack);
     
     if (0 == std::strcmp(direction.c_str(), "left"))
     {
@@ -160,6 +165,14 @@ void AI::stop()
     if (changeState(AI_STATE_IDLE))
     {
         pAIStateIdle_->enter();
+    }
+}
+
+void AI::attack()
+{
+    if (changeState(AI_STATE_ATTACK))
+    {
+        pAIStateAttack_->enter();
     }
 }
 
