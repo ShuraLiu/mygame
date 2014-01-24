@@ -10,6 +10,7 @@
 #define __mygame__Role__
 
 #include "cocos2d.h"
+#include "Actor.h"
 
 class RoleState;
 class Ladder;
@@ -28,14 +29,9 @@ enum ROLE_STATE
 };
 
 class Role
+: public Actor
 {
     typedef std::vector<cocos2d::Action*> ActionArray;
-    
-    enum Direction
-    {
-        LEFT,
-        RIGHT
-    };
     
 public:
     void setPosition(const cocos2d::Point& pos);

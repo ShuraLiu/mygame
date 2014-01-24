@@ -19,6 +19,7 @@
 		1AA6860C188EBE0E0081D531 /* GameSceneController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AA6860A188EBE0E0081D531 /* GameSceneController.cpp */; };
 		1AA68617188EBE970081D531 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AA68615188EBE970081D531 /* Game.cpp */; };
 		1AA6861A188EBFB10081D531 /* PreloadList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AA68618188EBFB10081D531 /* PreloadList.cpp */; };
+		1AABBC4018920CD400111FEE /* Actor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AABBC3E18920CD400111FEE /* Actor.cpp */; };
 		1ABE5885188F683600640FC1 /* GameScene.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 1ABE5884188F683600640FC1 /* GameScene.ccbi */; };
 		1ABE588E188F685000640FC1 /* resources-iphone in Resources */ = {isa = PBXBuildFile; fileRef = 1ABE588C188F685000640FC1 /* resources-iphone */; };
 		1ABE588F188F685000640FC1 /* resources-iphonehd in Resources */ = {isa = PBXBuildFile; fileRef = 1ABE588D188F685000640FC1 /* resources-iphonehd */; };
@@ -297,6 +298,8 @@
 		1AA68616188EBE970081D531 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Game.h; path = ../Classes/Game.h; sourceTree = "<group>"; };
 		1AA68618188EBFB10081D531 /* PreloadList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PreloadList.cpp; path = ../Classes/PreloadList.cpp; sourceTree = "<group>"; };
 		1AA68619188EBFB10081D531 /* PreloadList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreloadList.h; path = ../Classes/PreloadList.h; sourceTree = "<group>"; };
+		1AABBC3E18920CD400111FEE /* Actor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Actor.cpp; path = ../Classes/Actor.cpp; sourceTree = "<group>"; };
+		1AABBC3F18920CD400111FEE /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Actor.h; path = ../Classes/Actor.h; sourceTree = "<group>"; };
 		1ABE5884188F683600640FC1 /* GameScene.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = GameScene.ccbi; sourceTree = "<group>"; };
 		1ABE588C188F685000640FC1 /* resources-iphone */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "resources-iphone"; sourceTree = "<group>"; };
 		1ABE588D188F685000640FC1 /* resources-iphonehd */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "resources-iphonehd"; sourceTree = "<group>"; };
@@ -453,9 +456,8 @@
 				1ABE5893188F696000640FC1 /* ios */,
 				1AA68614188EBE830081D531 /* system */,
 				1AA68613188EBE650081D531 /* global */,
+				1AABBC3718920CBF00111FEE /* actor */,
 				1AE38880188E5F7C00CCFB7A /* ui */,
-				1A3B150F18910E8000B359E4 /* ai */,
-				1A631BA1188E4D0F0094E80C /* role */,
 				1AFB6D33188FCE1100275392 /* sceneobj */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
@@ -541,6 +543,17 @@
 				1ABE5891188F690700640FC1 /* DeviceResolution.h */,
 			);
 			name = system;
+			sourceTree = "<group>";
+		};
+		1AABBC3718920CBF00111FEE /* actor */ = {
+			isa = PBXGroup;
+			children = (
+				1A3B150F18910E8000B359E4 /* ai */,
+				1A631BA1188E4D0F0094E80C /* role */,
+				1AABBC3E18920CD400111FEE /* Actor.cpp */,
+				1AABBC3F18920CD400111FEE /* Actor.h */,
+			);
+			name = actor;
 			sourceTree = "<group>";
 		};
 		1ABE5893188F696000640FC1 /* ios */ = {
@@ -976,6 +989,7 @@
 				1AF2AAF518914060008C7072 /* AIStateMove.cpp in Sources */,
 				1AFB6D31188FAFF300275392 /* RoleStateMove.cpp in Sources */,
 				1A631BAA188E4D2D0094E80C /* RoleState.cpp in Sources */,
+				1AABBC4018920CD400111FEE /* Actor.cpp in Sources */,
 				1AA6860C188EBE0E0081D531 /* GameSceneController.cpp in Sources */,
 				1ABE5899188F748600640FC1 /* GameContext.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,

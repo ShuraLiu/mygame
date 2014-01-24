@@ -10,6 +10,7 @@
 #define __mygame__AI__
 
 #include "cocos2d.h"
+#include "Actor.h"
 
 class RoleState;
 
@@ -24,6 +25,7 @@ enum AI_STATE
 };
 
 class AI
+: public Actor
 {
     typedef std::vector<cocos2d::Action*> ActionArray;
     
