@@ -134,7 +134,20 @@
                 <key>sourceSize</key>
                 <string>{48,21}</string>
             </dict>
-            <key>button_ladder_normal.png</key>
+            <key>button_ladder_normal_0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{234,20},{16,16}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{16,16}}</string>
+                <key>sourceSize</key>
+                <string>{16,16}</string>
+            </dict>
+            <key>button_ladder_normal_1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{234,2},{16,16}}</string>
@@ -287,7 +300,7 @@
             <key>size</key>
             <string>{256,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:dd12437243405c643d68c260937fa9ef$</string>
+            <string>$TexturePacker:SmartUpdate:6282e695af81868cfedd71058f744739$</string>
             <key>textureFileName</key>
             <string>game_1.pvr.ccz</string>
         </dict>

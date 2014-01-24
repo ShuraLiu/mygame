@@ -40,15 +40,24 @@ void GameScene::update(float delta)
     logic_.update(delta);
 }
 
-void GameScene::onLadderCanClimb(Ladder *ladder)
+void GameScene::onLadderCanClimb(Ladder *ladder, bool isCanUp)
 {
-    Sprite* normalSprite = Sprite::createWithSpriteFrameName("button_ladder_normal.png");
-    Sprite* selectedSprite = Sprite::createWithSpriteFrameName("button_ladder_normal.png");
+    Sprite* normalSprite = 0;// Sprite::createWithSpriteFrameName("button_ladder_normal.png");
+    Sprite* selectedSprite = 0;// Sprite::createWithSpriteFrameName("button_ladder_normal.png");
+    if (isCanUp)
+    {
+        normalSprite = Sprite::createWithSpriteFrameName("button_ladder_normal_0.png");
+        selectedSprite = Sprite::createWithSpriteFrameName("button_ladder_normal_0.png");
+    }
+    else
+    {
+        normalSprite = Sprite::createWithSpriteFrameName("button_ladder_normal_1.png");
+        selectedSprite = Sprite::createWithSpriteFrameName("button_ladder_normal_1.png");
+    }
     MenuItemSprite* item = MenuItemSprite::create(normalSprite, selectedSprite, CC_CALLBACK_1(GameScene::onMenuClimb, this));
     item->setAnchorPoint(Point(0.5, 0.5));
     item->setPosition(Point::ZERO);
     item->setUserObject(ladder);
-//    item->set
     
     cocos2d::Menu* pMenu = Menu::create(item, NULL);
     pMenu->ignoreAnchorPointForPosition(false);
@@ -57,7 +66,6 @@ void GameScene::onLadderCanClimb(Ladder *ladder)
     pMenu->setPosition(Point(pSpriteLadder->getPositionX() + pSpriteLadder->getContentSize().width / 2, pSpriteLadder->getPositionY() + pSpriteLadder->getContentSize().height / 2));
     pLayerGame_->addChild(pMenu, ROLE_Z_ORDER - 1);
     pMenu->setTag(ladder->getTag());
-//    pMenu->setSwallowsTouches(true);
 }
 
 void GameScene::onMenuClimb(cocos2d::Object *obj)

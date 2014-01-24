@@ -41,7 +41,7 @@ public:
     virtual void onNodeLoaded(cocos2d::Node * pNode, cocosbuilder::NodeLoader * pNodeLoader);
     //GameLogic::IObserver
     virtual void onStatusChanged(GameLogic::GameStatus prevStatus, GameLogic::GameStatus status);
-    virtual void onLadderCanClimb(Ladder* ladder);
+    virtual void onLadderCanClimb(Ladder* ladder, bool isCanUp);
     virtual void onLadderCanNotClimb(Ladder* ladder);
     
 private:

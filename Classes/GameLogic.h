@@ -32,7 +32,7 @@ public:
     public:
         virtual ~IObserver(){};
         virtual void onStatusChanged(GameStatus prevStatus, GameStatus status) = 0;
-        virtual void onLadderCanClimb(Ladder* ladder) = 0;
+        virtual void onLadderCanClimb(Ladder* ladder, bool isCanUp) = 0;
         virtual void onLadderCanNotClimb(Ladder* ladder) = 0;
     };
     

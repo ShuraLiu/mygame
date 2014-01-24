@@ -58,12 +58,21 @@ void GameLogic::update(float delta)
                 for (int i = 0; i < ladderArray.size(); ++i)
                 {
                     Ladder* ladder = (Ladder*) ladderArray.at(i);
-                    if (!ladder->isCollisioned() && (checkCollision(context.getRole()->getBodyRect(), ladder->getCollsionRectDown()) || checkCollision(context.getRole()->getBodyRect(), ladder->getCollsionRectUp())))
+                    bool canClimbUp = checkCollision(context.getRole()->getBodyRect(), ladder->getCollsionRectDown());
+                    bool canClimbDown = checkCollision(context.getRole()->getBodyRect(), ladder->getCollsionRectUp());
+                    if (!ladder->isCollisioned() && (canClimbUp || canClimbDown))
                     {
                         ladder->onCollision();
-                        observer_.onLadderCanClimb(ladder);
+                        if (canClimbUp)
+                        {
+                            observer_.onLadderCanClimb(ladder, true);
+                        }
+                        else if (canClimbDown)
+                        {
+                            observer_.onLadderCanClimb(ladder, false);
+                        }
                     }
-                    if (ladder->isCollisioned() && (!checkCollision(context.getRole()->getBodyRect(), ladder->getCollsionRectDown()) && !checkCollision(context.getRole()->getBodyRect(), ladder->getCollsionRectUp())))
+                    if (ladder->isCollisioned() && (!canClimbUp && !canClimbDown))
                     {
                         ladder->noCollision();
                         observer_.onLadderCanNotClimb(ladder);
