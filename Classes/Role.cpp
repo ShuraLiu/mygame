@@ -58,9 +58,12 @@ void Role::init(const cocos2d::Point& initialPosition, const std::string& direct
     speedClimb_ = ROLE_CLIMB_SPEED;
     
     actions_.resize(ACTION_COUNT, 0);
-    RepeatForever* action = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_move.c_str())));
-    actions_.at(ACTION_MOVE) = action;
-    CC_SAFE_RETAIN(action);
+    RepeatForever* move = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_move.c_str())));
+    actions_.at(ACTION_MOVE) = move;
+    CC_SAFE_RETAIN(move);
+    RepeatForever* idle = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_idle.c_str())));
+    actions_.at(ACTION_IDLE) = idle;
+    CC_SAFE_RETAIN(idle);
     
     if (0 == std::strcmp(direction.c_str(), "left"))
     {

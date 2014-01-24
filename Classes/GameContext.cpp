@@ -41,15 +41,18 @@ bool GameContext::initTiledMap(const char *tmxFile)
             std::string name = (*valueMap.find("name")).second.asString();
             std::string direction = (*valueMap.find("direction")).second.asString();
             pRole_ = new Role(ActorFactory::getInstance().getActorPropertyByName(name.c_str()), Point(x, y), direction);
-//            pRole_->setPosition(Point(x, y));
         }
         else if (0 == (*it).second.asString().compare("ai"))
         {
-//            float x = (*valueMap.find("x")).second.asFloat();
-//            float y = (*valueMap.find("y")).second.asFloat();
-//            AI* ai = new AI();
-//            ai->setPosition(Point(x, y));
-//            aiArray_.push_back(ai);
+            float x = (*valueMap.find("x")).second.asFloat();
+            float y = (*valueMap.find("y")).second.asFloat();
+            std::string name = (*valueMap.find("name")).second.asString();
+            std::string direction = (*valueMap.find("direction")).second.asString();
+            AI* ai = new AI(ActorFactory::getInstance().getActorPropertyByName(name.c_str()), Point(x, y), direction);
+            ai->setIdleDuration((*valueMap.find("idleDuration")).second.asFloat());
+            ai->setMoveDistance((*valueMap.find("moveDistance")).second.asFloat());
+            ai->setSpeed((*valueMap.find("speed")).second.asFloat());
+            aiArray_.push_back(ai);
         }
     }
     

@@ -4,18 +4,148 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>button_ladder_normal.png</key>
+            <key>AI_0_alert_0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{92,121},{36,32}}</string>
+                <string>{{137,45},{45,36}}</string>
+                <key>offset</key>
+                <string>{9,-7}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{18,14},{45,36}}</string>
+                <key>sourceSize</key>
+                <string>{63,50}</string>
+            </dict>
+            <key>AI_0_alert_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{187,2},{45,42}}</string>
+                <key>offset</key>
+                <string>{9,-4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{18,8},{45,42}}</string>
+                <key>sourceSize</key>
+                <string>{63,50}</string>
+            </dict>
+            <key>AI_0_attack_0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{36,47},{47,44}}</string>
+                <key>offset</key>
+                <string>{-8,1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,2},{47,44}}</string>
+                <key>sourceSize</key>
+                <string>{63,50}</string>
+            </dict>
+            <key>AI_0_attack_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{88,2},{47,42}}</string>
+                <key>offset</key>
+                <string>{-8,-4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,8},{47,42}}</string>
+                <key>sourceSize</key>
+                <string>{63,50}</string>
+            </dict>
+            <key>AI_0_idle_0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{137,45},{45,36}}</string>
+                <key>offset</key>
+                <string>{9,-7}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{18,14},{45,36}}</string>
+                <key>sourceSize</key>
+                <string>{63,50}</string>
+            </dict>
+            <key>AI_0_move_0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{85,84},{45,36}}</string>
+                <key>offset</key>
+                <string>{9,-7}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{18,14},{45,36}}</string>
+                <key>sourceSize</key>
+                <string>{63,50}</string>
+            </dict>
+            <key>AI_0_move_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{137,45},{45,36}}</string>
+                <key>offset</key>
+                <string>{9,-7}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{18,14},{45,36}}</string>
+                <key>sourceSize</key>
+                <string>{63,50}</string>
+            </dict>
+            <key>AI_0_move_2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{88,46},{45,36}}</string>
+                <key>offset</key>
+                <string>{9,-7}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{18,14},{45,36}}</string>
+                <key>sourceSize</key>
+                <string>{63,50}</string>
+            </dict>
+            <key>AI_0_move_3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{137,45},{45,36}}</string>
+                <key>offset</key>
+                <string>{9,-7}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{18,14},{45,36}}</string>
+                <key>sourceSize</key>
+                <string>{63,50}</string>
+            </dict>
+            <key>box_0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,100},{30,21}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{36,32}}</string>
+                <string>{{9,0},{30,21}}</string>
                 <key>sourceSize</key>
-                <string>{36,32}</string>
+                <string>{48,21}</string>
+            </dict>
+            <key>button_ladder_normal.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{234,2},{16,16}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{16,16}}</string>
+                <key>sourceSize</key>
+                <string>{16,16}</string>
             </dict>
             <key>ladder_0.png</key>
             <dict>
@@ -24,7 +154,7 @@
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{32,96}}</string>
                 <key>sourceSize</key>
@@ -33,11 +163,11 @@
             <key>role_attack_0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{54,79},{40,43}}</string>
+                <string>{{135,83},{40,43}}</string>
                 <key>offset</key>
                 <string>{-2,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{13,0},{40,43}}</string>
                 <key>sourceSize</key>
@@ -46,7 +176,7 @@
             <key>role_attack_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{54,36},{48,41}}</string>
+                <string>{{137,2},{48,41}}</string>
                 <key>offset</key>
                 <string>{-8,-1}</string>
                 <key>rotated</key>
@@ -59,11 +189,11 @@
             <key>role_attack_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{47,121},{34,43}}</string>
+                <string>{{213,82},{34,43}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{19,0},{34,43}}</string>
                 <key>sourceSize</key>
@@ -72,7 +202,7 @@
             <key>role_attack_3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,36},{50,43}}</string>
+                <string>{{36,2},{50,43}}</string>
                 <key>offset</key>
                 <string>{9,0}</string>
                 <key>rotated</key>
@@ -82,10 +212,23 @@
                 <key>sourceSize</key>
                 <string>{70,43}</string>
             </dict>
+            <key>role_idle_0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{36,93},{32,41}}</string>
+                <key>offset</key>
+                <string>{2,-1}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{21,2},{32,41}}</string>
+                <key>sourceSize</key>
+                <string>{70,43}</string>
+            </dict>
             <key>role_move_0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,117},{34,43}}</string>
+                <string>{{184,46},{34,43}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
@@ -98,7 +241,7 @@
             <key>role_move_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,153},{32,41}}</string>
+                <string>{{36,93},{32,41}}</string>
                 <key>offset</key>
                 <string>{2,-1}</string>
                 <key>rotated</key>
@@ -111,11 +254,11 @@
             <key>role_move_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,81},{34,43}}</string>
+                <string>{{177,83},{34,43}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{19,0},{34,43}}</string>
                 <key>sourceSize</key>
@@ -124,7 +267,7 @@
             <key>role_move_3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,153},{32,41}}</string>
+                <string>{{36,93},{32,41}}</string>
                 <key>offset</key>
                 <string>{2,-1}</string>
                 <key>rotated</key>
@@ -142,9 +285,9 @@
             <key>realTextureFileName</key>
             <string>game_1.pvr.ccz</string>
             <key>size</key>
-            <string>{128,256}</string>
+            <string>{256,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:b1fe0965989201302e14cba47420b1d5$</string>
+            <string>$TexturePacker:SmartUpdate:dd12437243405c643d68c260937fa9ef$</string>
             <key>textureFileName</key>
             <string>game_1.pvr.ccz</string>
         </dict>

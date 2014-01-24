@@ -20,6 +20,9 @@ public:
 public:
     Actor(){};
     virtual ~Actor(){};
+    
+protected:
+    Direction direction_;
 };
 
 #endif /* defined(__mygame__Actor__) */

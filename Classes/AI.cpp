@@ -11,10 +11,11 @@
 #include "AIStateIdle.h"
 #include "AIStateMove.h"
 #include "Utils.h"
+#include "ActorProperty.h"
 
 USING_NS_CC;
 
-AI::AI()
+AI::AI(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction)
 : pAIStateIdle_(new AIStateIdle(this))
 , pAIStateMove_(new AIStateMove(this))
 , pAISprite_(0)
@@ -25,8 +26,9 @@ AI::AI()
 , currentIdleDuration_(0)
 , idleDuration_(0)
 , currentMoveDistance_(0)
+, property_(property)
 {
-    init();
+    init(initialPosition, direction);
 }
 
 AI::~AI()
@@ -43,22 +45,34 @@ AI::~AI()
     }
 }
 
-void AI::init()
+void AI::init(const cocos2d::Point& initialPosition, const std::string& direction)
 {
     pAISprite_ = Sprite::create();
     pAISprite_->setAnchorPoint(Point::ZERO);
-    pAISprite_->setPosition(Point::ZERO);
+    setPosition(initialPosition);
     CC_SAFE_RETAIN(pAISprite_);
-    bodyRect_ = Rect(183, 20, 131, 130);
-    attackRect_ = Rect(236, 28, 300, 165);
-    speedMove_ = 100;
-    idleDuration_ = 2;
-    autoMoveDistance_ = 200;
     
     actions_.resize(ACTION_COUNT, 0);
-    RepeatForever* action = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation("role_run")));
-    actions_.at(ACTION_MOVE) = action;
-    CC_SAFE_RETAIN(action);
+    RepeatForever* move = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_move.c_str())));
+    actions_.at(ACTION_MOVE) = move;
+    CC_SAFE_RETAIN(move);
+    RepeatForever* idle = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_idle.c_str())));
+    actions_.at(ACTION_IDLE) = idle;
+    CC_SAFE_RETAIN(idle);
+    
+    if (0 == std::strcmp(direction.c_str(), "left"))
+    {
+        direction_ = LEFT;
+    }
+    else
+    {
+        direction_ = RIGHT;
+    }
+    
+    if (0 != std::strcmp(direction.c_str(), property_->direction.c_str()))
+    {
+        pAISprite_->setFlippedX(true);
+    }
     
     if (changeState(AI_STATE_IDLE))
     {
@@ -82,7 +96,7 @@ void AI::doAutoLogic(float delta)
                 if (changeState(AI_STATE_MOVE))
                 {
                     currentIdleDuration_ = 0;
-                    pAISprite_->setFlippedX(!pAISprite_->isFlippedX());
+                    switchDirection(direction_ == LEFT ? RIGHT : LEFT);
                     pAIStateMove_->enter();
                 }
             }
@@ -95,14 +109,14 @@ void AI::doAutoLogic(float delta)
             currentMoveDistance_ += addDistance;
             if (utils::floatGreaterEuqalCompare(currentMoveDistance_, autoMoveDistance_))
             {
-                float nextX = currentX + (addDistance - ((currentMoveDistance_ - autoMoveDistance_))) * (pAISprite_->isFlippedX() ? -1 : 1);
+                float nextX = currentX + (addDistance - ((currentMoveDistance_ - autoMoveDistance_))) * (direction_ == LEFT ? -1 : 1);
                 pAISprite_->setPositionX(nextX - (currentMoveDistance_ - autoMoveDistance_));
                 stop();
                 currentMoveDistance_ = 0;
             }
             else
             {
-                float nextX = currentX + addDistance * (pAISprite_->isFlippedX() ? -1 : 1);
+                float nextX = currentX + addDistance * (direction_ == LEFT ? -1 : 1);
                 pAISprite_->setPositionX(nextX);
             }
         }
@@ -139,5 +153,14 @@ void AI::stop()
     if (changeState(AI_STATE_IDLE))
     {
         pAIStateIdle_->enter();
+    }
+}
+
+void AI::switchDirection(Actor::Direction direction)
+{
+    if (direction_ != direction)
+    {
+        direction_ = direction;
+        pAISprite_->setFlippedX(!pAISprite_->isFlippedX());
     }
 }

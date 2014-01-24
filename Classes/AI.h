@@ -13,6 +13,7 @@
 #include "Actor.h"
 
 class RoleState;
+class ActorProperty;
 
 enum AI_STATE
 {
@@ -46,11 +47,11 @@ public:
     };
     
 public:
-    void init();
+    void init(const cocos2d::Point& initialPosition, const std::string& direction);
     void update(float delta);
     
 public:
-    AI();
+    AI(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction);
     virtual ~AI();
     
     cocos2d::Sprite* getAISprite()
@@ -95,9 +96,14 @@ public:
     
 private:
     bool changeState(AI_STATE state);
+    void switchDirection(Direction direction);
     void doAutoLogic(float delta);
     
 private:
+    
+    CC_SYNTHESIZE(float, speedMove_, Speed);
+    CC_SYNTHESIZE(float, idleDuration_, IdleDuration);
+    CC_SYNTHESIZE(float, autoMoveDistance_, MoveDistance);
     RoleState* pAIStateIdle_;
     RoleState* pAIStateMove_;
     RoleState* pAIStateAttack_;
@@ -112,13 +118,11 @@ private:
     cocos2d::Sprite* pAISprite_;
     cocos2d::Rect bodyRect_;
     cocos2d::Rect attackRect_;
-    float speedMove_;
     
     float currentIdleDuration_;
     float currentMoveDistance_;
-    float autoMoveDistance_;
-    float idleDuration_;
     bool autoLogic_;
+    ActorProperty* property_;
 };
 
 #endif /* defined(__mygame__AI__) */

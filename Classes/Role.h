@@ -151,8 +151,6 @@ private:
     float speedMove_;
     float speedClimb_;
     
-    Direction direction_;
-    
     bool isClimbing_;
     cocos2d::Point positionToMove_;
     cocos2d::Point positionBeforeClimb_;

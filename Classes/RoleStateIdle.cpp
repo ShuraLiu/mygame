@@ -26,8 +26,7 @@ RoleStateIdle::~RoleStateIdle()
 
 void RoleStateIdle::enter()
 {
-    Sprite* pRoleSprite = pRole_->getRoleSprite();
-    pRoleSprite->setSpriteFrame("role_move_1.png");
+    pRole_->getRoleSprite()->runAction(pRole_->getActions().at(Role::ACTION_IDLE));
 }
 
 void RoleStateIdle::exit()

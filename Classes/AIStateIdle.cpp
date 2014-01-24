@@ -26,9 +26,7 @@ AIStateIdle::~AIStateIdle()
 
 void AIStateIdle::enter()
 {
-    pAI_->getAISprite()->setSpriteFrame("player_0_run_0.png");
-//    Sprite*  = pRole_->getRoleSprite();
-//    pRoleSprite->setSpriteFrame("player_0_run_0.png");
+    pAI_->getAISprite()->runAction(pAI_->getActions().at(AI::ACTION_IDLE));
 }
 
 void AIStateIdle::exit()
