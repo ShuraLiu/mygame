@@ -10,6 +10,7 @@
 #define mygame_config_h
 
 #define ROLE_MOVE_TAG 101
+#define ROLE_ATTACK_TAG 102
 #define ROLE_Z_ORDER 1
 
 #define ROLE_MOVE_SPEED 100

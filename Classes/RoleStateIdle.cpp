@@ -26,7 +26,8 @@ RoleStateIdle::~RoleStateIdle()
 
 void RoleStateIdle::enter()
 {
-    pRole_->getRoleSprite()->runAction(pRole_->getActions().at(Role::ACTION_IDLE));
+    pRole_->runAction(Role::ACTION_IDLE);
+//    pRole_->getRoleSprite()->runAction(pRole_->getActions().at(Role::ACTION_IDLE));
 }
 
 void RoleStateIdle::exit()

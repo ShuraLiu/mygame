@@ -24,6 +24,7 @@ public:
     void updateGameContext(float delta);
     void addSceneObjectsToLayer(cocos2d::Layer* layer);
     void addAIsToLayer(cocos2d::Layer* layer);
+    void cleanAICanAttack(AI* ai);
     
 public:
     static GameContext& getInstance()
@@ -66,7 +67,7 @@ private:
     SceneObjectArray ladderArray_;
     AIArray aiArray_;
     
-    CC_SYNTHESIZE(AI*, aiCanAttack, AICanAttack);
+    CC_SYNTHESIZE(AI*, aiCanAttack_, AICanAttack);
 };
 
 #endif /* defined(__mygame__GameContext__) */

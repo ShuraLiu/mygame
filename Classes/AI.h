@@ -35,6 +35,7 @@ public:
     void addAIToLayer(cocos2d::Layer* layer);
     void stop();
     void attack();
+    void dead();
     
 public:
     enum Action

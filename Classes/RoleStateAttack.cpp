@@ -26,7 +26,8 @@ RoleStateAttack::~RoleStateAttack()
 
 void RoleStateAttack::enter()
 {
-    pRole_->getRoleSprite()->runAction(pRole_->getActions().at(Role::ACTION_ATTACK));
+    pRole_->runAction(Role::ACTION_ATTACK);
+//    pRole_->getRoleSprite()->runAction(pRole_->getActions().at(Role::ACTION_ATTACK));
 }
 
 void RoleStateAttack::exit()

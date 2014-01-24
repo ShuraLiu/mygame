@@ -58,6 +58,7 @@ public:
 public:
     void init(const cocos2d::Point& initialPosition, const std::string& direction);
     void update(float delta);
+    void runAction(Action action);
 
 public:
     Role(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction);
@@ -162,6 +163,8 @@ private:
     cocos2d::Point positionToMove_;
     cocos2d::Point positionBeforeClimb_;
     cocos2d::Point positionAfterClimb_;
+    
+    Action currentAction_;
 };
 
 #endif /* defined(__mygame__Role__) */

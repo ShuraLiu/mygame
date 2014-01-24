@@ -15,6 +15,7 @@
 		1A3B150E1891024800B359E4 /* RoleStateClimb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B150C1891024800B359E4 /* RoleStateClimb.cpp */; };
 		1A3B151218910EC500B359E4 /* AI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B151018910EC500B359E4 /* AI.cpp */; };
 		1A3B15151891219300B359E4 /* AIStateIdle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B15131891219300B359E4 /* AIStateIdle.cpp */; };
+		1A60A8AD1892752300B0026E /* AIStateDead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A60A8AB1892752300B0026E /* AIStateDead.cpp */; };
 		1A631BAA188E4D2D0094E80C /* RoleState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A631BA8188E4D2D0094E80C /* RoleState.cpp */; };
 		1A631BAD188E545E0094E80C /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A631BAB188E545E0094E80C /* GameScene.cpp */; };
 		1A6788B31891570B00825B13 /* ActorProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A6788B11891570B00825B13 /* ActorProperty.cpp */; };
@@ -300,6 +301,8 @@
 		1A3B151118910EC500B359E4 /* AI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AI.h; path = ../Classes/AI.h; sourceTree = "<group>"; };
 		1A3B15131891219300B359E4 /* AIStateIdle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AIStateIdle.cpp; path = ../Classes/AIStateIdle.cpp; sourceTree = "<group>"; };
 		1A3B15141891219300B359E4 /* AIStateIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIStateIdle.h; path = ../Classes/AIStateIdle.h; sourceTree = "<group>"; };
+		1A60A8AB1892752300B0026E /* AIStateDead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AIStateDead.cpp; path = ../Classes/AIStateDead.cpp; sourceTree = "<group>"; };
+		1A60A8AC1892752300B0026E /* AIStateDead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIStateDead.h; path = ../Classes/AIStateDead.h; sourceTree = "<group>"; };
 		1A631BA8188E4D2D0094E80C /* RoleState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RoleState.cpp; path = ../Classes/RoleState.cpp; sourceTree = "<group>"; };
 		1A631BA9188E4D2D0094E80C /* RoleState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoleState.h; path = ../Classes/RoleState.h; sourceTree = "<group>"; };
 		1A631BAB188E545E0094E80C /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
@@ -528,6 +531,8 @@
 				1AF2AAF418914060008C7072 /* AIStateMove.h */,
 				1A1B64EF1892512B00374100 /* AIStateAttack.cpp */,
 				1A1B64F01892512B00374100 /* AIStateAttack.h */,
+				1A60A8AB1892752300B0026E /* AIStateDead.cpp */,
+				1A60A8AC1892752300B0026E /* AIStateDead.h */,
 			);
 			name = ai;
 			sourceTree = "<group>";
@@ -1064,6 +1069,7 @@
 				1AF2AAFF189142FF008C7072 /* Utils.cpp in Sources */,
 				1A1B64F4189253DD00374100 /* RoleStateAttack.cpp in Sources */,
 				1A3B150E1891024800B359E4 /* RoleStateClimb.cpp in Sources */,
+				1A60A8AD1892752300B0026E /* AIStateDead.cpp in Sources */,
 				1A631BAD188E545E0094E80C /* GameScene.cpp in Sources */,
 				1A0F128C188EBCF5001ABB22 /* SceneController.cpp in Sources */,
 				1A6788B31891570B00825B13 /* ActorProperty.cpp in Sources */,

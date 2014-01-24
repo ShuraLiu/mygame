@@ -15,6 +15,7 @@
 #include "config.h"
 #include "Ladder.h"
 #include "ActorProperty.h"
+#include "GameContext.h"
 
 USING_NS_CC;
 
@@ -70,6 +71,7 @@ void Role::init(const cocos2d::Point& initialPosition, const std::string& direct
     CC_SAFE_RETAIN(idle);
     Animate* attack = Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_attack.c_str()));
     actions_.at(ACTION_ATTACK) = attack;
+    attack->setTag(ROLE_ATTACK_TAG);
     CC_SAFE_RETAIN(attack);
     
     if (0 == std::strcmp(direction.c_str(), "left"))
@@ -143,6 +145,14 @@ void Role::update(float delta)
             }
         }
             break;
+        case ROLE_STATE_ATTACK:
+        {
+            if (!pRoleSprite_->getActionByTag(ROLE_ATTACK_TAG))
+            {
+                stop();
+            }
+        }
+            break;
         default:
             break;
     }
@@ -204,6 +214,13 @@ bool Role::changeState(ROLE_STATE state)
     if (mState_ == ROLE_STATE_DEAD)
     {
         return  false;
+    }
+    if (state == ROLE_STATE_MOVE)
+    {
+        if (mState_ == ROLE_STATE_PRE_CLIMB || mState_ == ROLE_STATE_CLIMB || mState_ == ROLE_STATE_ATTACK)
+        {
+            return false;
+        }
     }
     pRoleSprite_->stopAllActions();
     mPrevState_ = mState_;
@@ -275,5 +292,12 @@ void Role::notReadyToAttack()
                                                   
 void Role::onMenuAttack(cocos2d::Object *obj)
 {
-    
+    attack();
+    GameContext::getInstance().getAICanAttack()->dead();
+}
+
+void Role::runAction(Role::Action action)
+{
+    pRoleSprite_->runAction(actions_.at(action));
+    currentAction_ = action;
 }

@@ -100,3 +100,11 @@ void GameContext::addAIsToLayer(cocos2d::Layer *layer)
         aiArray_.at(i)->addAIToLayer(layer);
     }
 }
+
+void GameContext::cleanAICanAttack(AI *ai)
+{
+    if (aiCanAttack_ == ai)
+    {
+        aiCanAttack_ = 0;
+    }
+}

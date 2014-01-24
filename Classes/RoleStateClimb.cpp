@@ -26,7 +26,8 @@ RoleStateClimb::~RoleStateClimb()
 
 void RoleStateClimb::enter()
 {
-    pRole_->getRoleSprite()->runAction(pRole_->getActions().at(Role::ACTION_MOVE));
+    pRole_->runAction(Role::ACTION_MOVE);
+//    pRole_->getRoleSprite()->runAction(pRole_->getActions().at(Role::ACTION_MOVE));
 }
 
 void RoleStateClimb::exit()

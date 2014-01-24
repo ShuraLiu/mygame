@@ -11,8 +11,10 @@
 #include "AIStateIdle.h"
 #include "AIStateMove.h"
 #include "AIStateAttack.h"
+#include "AIStateDead.h"
 #include "Utils.h"
 #include "ActorProperty.h"
+#include "GameContext.h"
 
 USING_NS_CC;
 
@@ -20,6 +22,7 @@ AI::AI(ActorProperty* property, const cocos2d::Point& initialPosition, const std
 : pAIStateIdle_(new AIStateIdle(this))
 , pAIStateMove_(new AIStateMove(this))
 , pAIStateAttack_(new AIStateAttack(this))
+, pAIStateDead_(new AIStateDead(this))
 , pAISprite_(0)
 , speedMove_(speed)
 , idleDuration_(idleDuration)
@@ -65,6 +68,9 @@ void AI::init(const cocos2d::Point& initialPosition, const std::string& directio
     Animate* attack = Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_attack.c_str()));
     actions_.at(ACTION_ATTACK) = attack;
     CC_SAFE_RETAIN(attack);
+    Animate* dead = Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_dead.c_str()));
+    actions_.at(ACTION_DEAD) = dead;
+    CC_SAFE_RETAIN(dead);
     
     if (0 == std::strcmp(direction.c_str(), "left"))
     {
@@ -174,6 +180,15 @@ void AI::attack()
     {
         pAIStateAttack_->enter();
     }
+}
+
+void AI::dead()
+{
+    if (changeState(AI_STATE_DEAD))
+    {
+        pAIStateDead_->enter();
+    }
+    GameContext::getInstance().cleanAICanAttack(this);
 }
 
 void AI::switchDirection(Actor::Direction direction)
