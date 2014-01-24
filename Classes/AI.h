@@ -70,10 +70,7 @@ public:
         return getCollisionBodyRect();
     }
     
-    cocos2d::Rect getCollisionBodyRect()
-    {
-        return cocos2d::Rect(pAISprite_->getPositionX() + bodyRect_.origin.x, pAISprite_->getPositionY() + bodyRect_.origin.y, bodyRect_.size.width, bodyRect_.size.height);
-    }
+    cocos2d::Rect getCollisionBodyRect();
     
     const ActionArray& getActions()
     {
@@ -114,8 +111,6 @@ private:
     ActionArray actions_;
     
     cocos2d::Sprite* pAISprite_;
-    cocos2d::Rect bodyRect_;
-    cocos2d::Rect attackRect_;
     
     float currentIdleDuration_;
     float currentMoveDistance_;

@@ -94,7 +94,7 @@ void AI::init(const cocos2d::Point& initialPosition, const std::string& directio
 
 void AI::update(float delta)
 {
-    doAutoLogic(delta);
+//    doAutoLogic(delta);
 }
 
 void AI::doAutoLogic(float delta)
@@ -139,7 +139,7 @@ void AI::doAutoLogic(float delta)
 
 void AI::setPosition(const cocos2d::Point &pos)
 {
-    Point position = Point(pos.x - bodyRect_.origin.x, pos.y - bodyRect_.origin.y);
+    Point position = Point(pos.x - property_->bodyRect.origin.x, pos.y - property_->bodyRect.origin.y);
     pAISprite_->setPosition(position);
 }
 
@@ -189,4 +189,9 @@ Rect AI::getAttackRect()
 {
     Rect rect = direction_ == RIGHT ? property_->rightAttackRect : property_->leftAttackRect;
     return Rect(pAISprite_->getPositionX() + rect.origin.x, pAISprite_->getPositionY() + rect.origin.y, rect.size.width, rect.size.height);
+}
+
+Rect AI::getCollisionBodyRect()
+{
+    return cocos2d::Rect(pAISprite_->getPositionX() + property_->bodyRect.origin.x, pAISprite_->getPositionY() + property_->bodyRect.origin.y, property_->bodyRect.size.width, property_->bodyRect.size.height);
 }
