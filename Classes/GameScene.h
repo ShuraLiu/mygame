@@ -43,9 +43,11 @@ public:
     virtual void onStatusChanged(GameLogic::GameStatus prevStatus, GameLogic::GameStatus status);
     virtual void onLadderCanClimb(Ladder* ladder, bool isCanUp);
     virtual void onLadderCanNotClimb(Ladder* ladder);
+    virtual void onAICanAttack();
     
 private:
     void onMenuClimb(cocos2d::Object* obj);
+    void onMenuAttack(cocos2d::Object* obj);
     
 private:
     GameLogic logic_;

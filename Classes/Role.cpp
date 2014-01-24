@@ -18,6 +18,8 @@
 
 USING_NS_CC;
 
+static const int ATTACK_MENU_TAG = 1;
+
 Role::Role(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction)
 : pRoleStateIdle_(new RoleStateIdle(this))
 , pRoleStateMove_(new RoleStateMove(this))
@@ -244,4 +246,34 @@ void Role::attack()
     {
         pRoleStateAttack_->enter();
     }
+}
+
+void Role::readyToAttack()
+{
+    if (!pRoleSprite_->getChildByTag(ATTACK_MENU_TAG))
+    {
+        Sprite* normalSprite = Sprite::createWithSpriteFrameName("button_role_attack.png");
+        Sprite* selectedSprite = Sprite::createWithSpriteFrameName("button_role_attack.png");
+        MenuItemSprite* item = MenuItemSprite::create(normalSprite, selectedSprite, CC_CALLBACK_1(Role::onMenuAttack, this));
+        item->setAnchorPoint(Point(0.5, 0.5));
+        item->setPosition(Point::ZERO);
+        Menu* menu = Menu::create(item, NULL);
+        menu->ignoreAnchorPointForPosition(false);
+        menu->setAnchorPoint(Point::ZERO);
+        menu->setPosition(Point(pRoleSprite_->getContentSize().width / 2, pRoleSprite_->getContentSize().height * 3 / 2));
+        pRoleSprite_->addChild(menu, 1, ATTACK_MENU_TAG);
+    }
+}
+
+void Role::notReadyToAttack()
+{
+    if (pRoleSprite_->getChildByTag(ATTACK_MENU_TAG))
+    {
+        pRoleSprite_->removeChildByTag(ATTACK_MENU_TAG);
+    }
+}
+                                                  
+void Role::onMenuAttack(cocos2d::Object *obj)
+{
+    
 }

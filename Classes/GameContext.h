@@ -65,6 +65,8 @@ private:
     Role* pRole_;
     SceneObjectArray ladderArray_;
     AIArray aiArray_;
+    
+    CC_SYNTHESIZE(AI*, aiCanAttack, AICanAttack);
 };
 
 #endif /* defined(__mygame__GameContext__) */

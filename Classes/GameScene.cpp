@@ -82,6 +82,11 @@ void GameScene::onLadderCanNotClimb(Ladder *ladder)
     }
 }
 
+void GameScene::onAICanAttack()
+{
+    
+}
+
 void GameScene::onStatusChanged(GameLogic::GameStatus prevStatus, GameLogic::GameStatus status)
 {
     switch (status)

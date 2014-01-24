@@ -40,6 +40,8 @@ public:
     void climb(Ladder* ladder, bool isClimbUp);
     void stop();
     void attack();
+    void readyToAttack();
+    void notReadyToAttack();
     
 public:
     enum Action
@@ -133,6 +135,8 @@ public:
 private:
     bool changeState(ROLE_STATE state);
     void switchDirection(Direction direction);
+    
+    void onMenuAttack(cocos2d::Object* obj);
     
 private:
     ActorProperty* property_;

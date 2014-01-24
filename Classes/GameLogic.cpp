@@ -76,14 +76,23 @@ void GameLogic::dealCollsionRoleAndAI()
 //                pAI->attack();
 //            }
 //        }
+        AI* pAIToAttack = 0;
         for (int i = 0; i < aiArray.size(); ++i)
         {
             AI* pAI = aiArray.at(i);
             if (pRole->getCurrentState() != ROLE_STATE_ATTACK && checkCollision(pRole->getAttackRect(), pAI->getBodyRect()))
             {
-                CCLOG("Role can attack AI");
-                pRole->attack();
+                pAIToAttack = pAI;
             }
+        }
+        if (!pAIToAttack)
+        {
+            pRole->notReadyToAttack();
+        }
+        else
+        {
+            context.setAICanAttack(pAIToAttack);
+            pRole->readyToAttack();
         }
     }
 }
