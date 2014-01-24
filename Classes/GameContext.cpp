@@ -48,10 +48,10 @@ bool GameContext::initTiledMap(const char *tmxFile)
             float y = (*valueMap.find("y")).second.asFloat();
             std::string name = (*valueMap.find("name")).second.asString();
             std::string direction = (*valueMap.find("direction")).second.asString();
-            AI* ai = new AI(ActorFactory::getInstance().getActorPropertyByName(name.c_str()), Point(x, y), direction);
-            ai->setIdleDuration((*valueMap.find("idleDuration")).second.asFloat());
-            ai->setMoveDistance((*valueMap.find("moveDistance")).second.asFloat());
-            ai->setSpeed((*valueMap.find("speed")).second.asFloat());
+            float idleDuration = (*valueMap.find("idleDuration")).second.asFloat();
+            float moveDistance = (*valueMap.find("moveDistance")).second.asFloat();
+            float speed = (*valueMap.find("speed")).second.asFloat();
+            AI* ai = new AI(ActorFactory::getInstance().getActorPropertyByName(name.c_str()), Point(x, y), direction, speed, idleDuration, moveDistance);
             aiArray_.push_back(ai);
         }
     }

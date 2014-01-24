@@ -15,16 +15,17 @@
 
 USING_NS_CC;
 
-AI::AI(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction)
+AI::AI(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction, float speed, float idleDuration, float moveDistance)
 : pAIStateIdle_(new AIStateIdle(this))
 , pAIStateMove_(new AIStateMove(this))
 , pAISprite_(0)
-, speedMove_(0)
+, speedMove_(speed)
+, idleDuration_(idleDuration)
+, autoMoveDistance_(moveDistance)
 , mState_(AI_STATE_NONE)
 , mPrevState_(AI_STATE_NONE)
 , autoLogic_(true)
 , currentIdleDuration_(0)
-, idleDuration_(0)
 , currentMoveDistance_(0)
 , property_(property)
 {
@@ -69,6 +70,12 @@ void AI::init(const cocos2d::Point& initialPosition, const std::string& directio
         direction_ = RIGHT;
     }
     
+    initialPosition_ = pAISprite_->getPosition();
+    float x = (direction_ == LEFT) ? (initialPosition_.x + autoMoveDistance_) : (initialPosition_.x - autoMoveDistance_);
+    float y = initialPosition_.y;
+    autoMoveEndPosition_ = Point(x, y);
+    currentTargetPosition_ = initialPosition_;
+    
     if (0 != std::strcmp(direction.c_str(), property_->direction.c_str()))
     {
         pAISprite_->setFlippedX(true);
@@ -97,6 +104,7 @@ void AI::doAutoLogic(float delta)
                 {
                     currentIdleDuration_ = 0;
                     switchDirection(direction_ == LEFT ? RIGHT : LEFT);
+                    currentTargetPosition_ = currentTargetPosition_ == initialPosition_ ? autoMoveEndPosition_ : initialPosition_;
                     pAIStateMove_->enter();
                 }
             }
@@ -109,8 +117,7 @@ void AI::doAutoLogic(float delta)
             currentMoveDistance_ += addDistance;
             if (utils::floatGreaterEuqalCompare(currentMoveDistance_, autoMoveDistance_))
             {
-                float nextX = currentX + (addDistance - ((currentMoveDistance_ - autoMoveDistance_))) * (direction_ == LEFT ? -1 : 1);
-                pAISprite_->setPositionX(nextX - (currentMoveDistance_ - autoMoveDistance_));
+                pAISprite_->setPositionX(currentTargetPosition_.x);
                 stop();
                 currentMoveDistance_ = 0;
             }

@@ -51,7 +51,7 @@ public:
     void update(float delta);
     
 public:
-    AI(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction);
+    AI(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction, float speed, float idleDuration, float moveDistance);
     virtual ~AI();
     
     cocos2d::Sprite* getAISprite()
@@ -123,6 +123,10 @@ private:
     float currentMoveDistance_;
     bool autoLogic_;
     ActorProperty* property_;
+    
+    cocos2d::Point initialPosition_;
+    cocos2d::Point autoMoveEndPosition_;
+    cocos2d::Point currentTargetPosition_;
 };
 
 #endif /* defined(__mygame__AI__) */
