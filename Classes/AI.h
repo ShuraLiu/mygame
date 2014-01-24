@@ -74,11 +74,6 @@ public:
         return cocos2d::Rect(pAISprite_->getPositionX() + bodyRect_.origin.x, pAISprite_->getPositionY() + bodyRect_.origin.y, bodyRect_.size.width, bodyRect_.size.height);
     }
     
-    const cocos2d::Rect& getAttackRect()
-    {
-        return attackRect_;
-    }
-    
     const ActionArray& getActions()
     {
         return actions_;
@@ -93,6 +88,8 @@ public:
     {
         return mPrevState_;
     }
+    
+    cocos2d::Rect getAttackRect();
     
 private:
     bool changeState(AI_STATE state);

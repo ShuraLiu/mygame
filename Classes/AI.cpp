@@ -171,3 +171,9 @@ void AI::switchDirection(Actor::Direction direction)
         pAISprite_->setFlippedX(!pAISprite_->isFlippedX());
     }
 }
+
+Rect AI::getAttackRect()
+{
+    Rect rect = direction_ == RIGHT ? property_->rightAttackRect : property_->leftAttackRect;
+    return Rect(pAISprite_->getPositionX() + rect.origin.x, pAISprite_->getPositionY() + rect.origin.y, rect.size.width, rect.size.height);
+}

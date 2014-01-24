@@ -53,6 +53,8 @@ public:
     
 private:
     bool checkCollision(const cocos2d::Rect& rect1, const cocos2d::Rect& rect2);
+    void dealCollsionRoleAndAI();
+    void dealCollisionRoleAndLadder();
     
 private:
     IObserver& observer_;

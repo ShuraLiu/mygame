@@ -51,47 +51,72 @@ void GameLogic::update(float delta)
         {
             GameContext& context = GameContext::getInstance();
             context.updateGameContext(delta);
-            GameContext::SceneObjectArray& ladderArray = GameContext::getInstance().getLadderArray();
-            if (context.getRole()->getCurrentState() != ROLE_STATE_PRE_CLIMB
-                && context.getRole()->getCurrentState() != ROLE_STATE_CLIMB)
-            {
-                for (int i = 0; i < ladderArray.size(); ++i)
-                {
-                    Ladder* ladder = (Ladder*) ladderArray.at(i);
-                    bool canClimbUp = checkCollision(context.getRole()->getBodyRect(), ladder->getCollsionRectDown());
-                    bool canClimbDown = checkCollision(context.getRole()->getBodyRect(), ladder->getCollsionRectUp());
-                    if (!ladder->isCollisioned() && (canClimbUp || canClimbDown))
-                    {
-                        ladder->onCollision();
-                        if (canClimbUp)
-                        {
-                            observer_.onLadderCanClimb(ladder, true);
-                        }
-                        else if (canClimbDown)
-                        {
-                            observer_.onLadderCanClimb(ladder, false);
-                        }
-                    }
-                    if (ladder->isCollisioned() && (!canClimbUp && !canClimbDown))
-                    {
-                        ladder->noCollision();
-                        observer_.onLadderCanNotClimb(ladder);
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < ladderArray.size(); ++i)
-                {
-                    Ladder* ladder = (Ladder*) ladderArray.at(i);
-                    ladder->noCollision();
-                    observer_.onLadderCanNotClimb(ladder);
-                }
-            }
+            dealCollsionRoleAndAI();
+            dealCollisionRoleAndLadder();
         }
             break;
         default:
             break;
+    }
+}
+
+void GameLogic::dealCollsionRoleAndAI()
+{
+    GameContext& context = GameContext::getInstance();
+    GameContext::AIArray& aiArray = context.getAIArray();
+    Role* pRole = context.getRole();
+    if (pRole->getCurrentState() != ROLE_STATE_PRE_CLIMB && pRole->getCurrentState() != ROLE_STATE_CLIMB)
+    {
+        for (int i = 0; i < aiArray.size(); ++i)
+        {
+            AI* pAI = aiArray.at(i);
+            if (checkCollision(pAI->getAttackRect(), pRole->getBodyRect()))
+            {
+                CCLOG("AI can attack Role");
+            }
+        }
+    }
+}
+
+void GameLogic::dealCollisionRoleAndLadder()
+{
+    GameContext& context = GameContext::getInstance();
+    GameContext::SceneObjectArray& ladderArray = GameContext::getInstance().getLadderArray();
+    if (context.getRole()->getCurrentState() != ROLE_STATE_PRE_CLIMB
+        && context.getRole()->getCurrentState() != ROLE_STATE_CLIMB)
+    {
+        for (int i = 0; i < ladderArray.size(); ++i)
+        {
+            Ladder* ladder = (Ladder*) ladderArray.at(i);
+            bool canClimbUp = checkCollision(context.getRole()->getBodyRect(), ladder->getCollsionRectDown());
+            bool canClimbDown = checkCollision(context.getRole()->getBodyRect(), ladder->getCollsionRectUp());
+            if (!ladder->isCollisioned() && (canClimbUp || canClimbDown))
+            {
+                ladder->onCollision();
+                if (canClimbUp)
+                {
+                    observer_.onLadderCanClimb(ladder, true);
+                }
+                else if (canClimbDown)
+                {
+                    observer_.onLadderCanClimb(ladder, false);
+                }
+            }
+            if (ladder->isCollisioned() && (!canClimbUp && !canClimbDown))
+            {
+                ladder->noCollision();
+                observer_.onLadderCanNotClimb(ladder);
+            }
+        }
+    }
+    else
+    {
+        for (int i = 0; i < ladderArray.size(); ++i)
+        {
+            Ladder* ladder = (Ladder*) ladderArray.at(i);
+            ladder->noCollision();
+            observer_.onLadderCanNotClimb(ladder);
+        }
     }
 }
 
