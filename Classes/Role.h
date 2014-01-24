@@ -38,7 +38,6 @@ class Role
     };
     
 public:
-    void setRoleState(RoleState* state);
     void setPosition(const cocos2d::Point& pos);
     void addRoleToLayer(cocos2d::Layer* layer);
     void moveTo(const cocos2d::Point& pos);
@@ -58,11 +57,11 @@ public:
     };
     
 public:
-    void init();
+    void init(const cocos2d::Point& initialPosition, const std::string& direction);
     void update(float delta);
 
 public:
-    Role(ActorProperty* property);
+    Role(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction);
     virtual ~Role();
     
     cocos2d::Sprite* getRoleSprite()

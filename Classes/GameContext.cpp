@@ -39,8 +39,9 @@ bool GameContext::initTiledMap(const char *tmxFile)
             float x = (*valueMap.find("x")).second.asFloat();
             float y = (*valueMap.find("y")).second.asFloat();
             std::string name = (*valueMap.find("name")).second.asString();
-            pRole_ = new Role(ActorFactory::getInstance().getActorPropertyByName(name.c_str()));
-            pRole_->setPosition(Point(x, y));
+            std::string direction = (*valueMap.find("direction")).second.asString();
+            pRole_ = new Role(ActorFactory::getInstance().getActorPropertyByName(name.c_str()), Point(x, y), direction);
+//            pRole_->setPosition(Point(x, y));
         }
         else if (0 == (*it).second.asString().compare("ai"))
         {

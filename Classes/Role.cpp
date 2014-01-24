@@ -17,7 +17,7 @@
 
 USING_NS_CC;
 
-Role::Role(ActorProperty* property)
+Role::Role(ActorProperty* property, const cocos2d::Point& initialPosition, const std::string& direction)
 : pRoleStateIdle_(new RoleStateIdle(this))
 , pRoleStateMove_(new RoleStateMove(this))
 , pRoleStatePreClimb_(new RoleStatePreClimb(this))
@@ -31,7 +31,7 @@ Role::Role(ActorProperty* property)
 , positionToMove_(Point::ZERO)
 , property_(property)
 {
-    init();
+    init(initialPosition, direction);
 }
 
 Role::~Role()
@@ -48,11 +48,11 @@ Role::~Role()
     }
 }
 
-void Role::init()
+void Role::init(const cocos2d::Point& initialPosition, const std::string& direction)
 {
     pRoleSprite_ = Sprite::create();
     pRoleSprite_->setAnchorPoint(Point::ZERO);
-    pRoleSprite_->setPosition(Point::ZERO);
+    setPosition(initialPosition);
     CC_SAFE_RETAIN(pRoleSprite_);
     speedMove_ = ROLE_MOVE_SPEED;
     speedClimb_ = ROLE_CLIMB_SPEED;
@@ -62,13 +62,18 @@ void Role::init()
     actions_.at(ACTION_MOVE) = action;
     CC_SAFE_RETAIN(action);
     
-    if (std::strcmp(property_->direction.c_str(), "left"))
+    if (0 == std::strcmp(direction.c_str(), "left"))
     {
         direction_ = LEFT;
     }
     else
     {
         direction_ = RIGHT;
+    }
+    
+    if (0 != std::strcmp(direction.c_str(), property_->direction.c_str()))
+    {
+        pRoleSprite_->setFlippedX(true);
     }
     
     if (changeState(ROLE_STATE_IDLE))
@@ -139,11 +144,6 @@ void Role::update(float delta)
     {
         
     }
-}
-
-void Role::setRoleState(RoleState *state)
-{
-    pCurrentState_ = state;
 }
 
 void Role::setPosition(const cocos2d::Point &pos)
@@ -217,6 +217,9 @@ Rect Role::getCollisionBodyRect()
 
 void Role::switchDirection(Direction direction)
 {
-    direction_ = direction;
-    pRoleSprite_->setFlippedX(direction_ == LEFT);
+    if (direction_ != direction)
+    {
+        direction_ = direction;
+        pRoleSprite_->setFlippedX(!pRoleSprite_->isFlippedX());
+    }
 }
