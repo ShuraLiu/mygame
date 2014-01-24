@@ -11,6 +11,7 @@
 #include "RoleStateMove.h"
 #include "RoleStatePreClimb.h"
 #include "RoleStateClimb.h"
+#include "RoleStateAttack.h"
 #include "config.h"
 #include "Ladder.h"
 #include "ActorProperty.h"
@@ -22,6 +23,7 @@ Role::Role(ActorProperty* property, const cocos2d::Point& initialPosition, const
 , pRoleStateMove_(new RoleStateMove(this))
 , pRoleStatePreClimb_(new RoleStatePreClimb(this))
 , pRoleStateClimb_(new RoleStateClimb(this))
+, pRoleStateAttack_(new RoleStateAttack(this))
 , pCurrentState_(0)
 , pRoleSprite_(0)
 , speedClimb_(0)
@@ -64,6 +66,9 @@ void Role::init(const cocos2d::Point& initialPosition, const std::string& direct
     RepeatForever* idle = RepeatForever::create(Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_idle.c_str())));
     actions_.at(ACTION_IDLE) = idle;
     CC_SAFE_RETAIN(idle);
+    Animate* attack = Animate::create(AnimationCache::getInstance()->getAnimation(property_->action_attack.c_str()));
+    actions_.at(ACTION_ATTACK) = attack;
+    CC_SAFE_RETAIN(attack);
     
     if (0 == std::strcmp(direction.c_str(), "left"))
     {
@@ -224,5 +229,19 @@ void Role::switchDirection(Direction direction)
     {
         direction_ = direction;
         pRoleSprite_->setFlippedX(!pRoleSprite_->isFlippedX());
+    }
+}
+
+Rect Role::getAttackRect()
+{
+    Rect rect = direction_ == RIGHT ? property_->rightAttackRect : property_->leftAttackRect;
+    return Rect(pRoleSprite_->getPositionX() + rect.origin.x, pRoleSprite_->getPositionY() + rect.origin.y, rect.size.width, rect.size.height);
+}
+
+void Role::attack()
+{
+    if (changeState(ROLE_STATE_ATTACK))
+    {
+        pRoleStateAttack_->enter();
     }
 }

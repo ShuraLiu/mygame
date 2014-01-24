@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1A0F128C188EBCF5001ABB22 /* SceneController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A0F128A188EBCF5001ABB22 /* SceneController.cpp */; };
 		1A1B64F11892512B00374100 /* AIStateAttack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B64EF1892512B00374100 /* AIStateAttack.cpp */; };
+		1A1B64F4189253DD00374100 /* RoleStateAttack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B64F2189253DD00374100 /* RoleStateAttack.cpp */; };
 		1A1FC412188EB0FA00A9D7C0 /* Role.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A1FC410188EB0FA00A9D7C0 /* Role.cpp */; };
 		1A3B15051890FBA900B359E4 /* RoleStatePreClimb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B15031890FBA900B359E4 /* RoleStatePreClimb.cpp */; };
 		1A3B150E1891024800B359E4 /* RoleStateClimb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B150C1891024800B359E4 /* RoleStateClimb.cpp */; };
@@ -287,6 +288,8 @@
 		1A0F128B188EBCF5001ABB22 /* SceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneController.h; path = ../Classes/SceneController.h; sourceTree = "<group>"; };
 		1A1B64EF1892512B00374100 /* AIStateAttack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AIStateAttack.cpp; path = ../Classes/AIStateAttack.cpp; sourceTree = "<group>"; };
 		1A1B64F01892512B00374100 /* AIStateAttack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIStateAttack.h; path = ../Classes/AIStateAttack.h; sourceTree = "<group>"; };
+		1A1B64F2189253DD00374100 /* RoleStateAttack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RoleStateAttack.cpp; path = ../Classes/RoleStateAttack.cpp; sourceTree = "<group>"; };
+		1A1B64F3189253DD00374100 /* RoleStateAttack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoleStateAttack.h; path = ../Classes/RoleStateAttack.h; sourceTree = "<group>"; };
 		1A1FC410188EB0FA00A9D7C0 /* Role.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Role.cpp; path = ../Classes/Role.cpp; sourceTree = "<group>"; };
 		1A1FC411188EB0FA00A9D7C0 /* Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Role.h; path = ../Classes/Role.h; sourceTree = "<group>"; };
 		1A3B15031890FBA900B359E4 /* RoleStatePreClimb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RoleStatePreClimb.cpp; path = ../Classes/RoleStatePreClimb.cpp; sourceTree = "<group>"; };
@@ -542,6 +545,8 @@
 				1A3B15041890FBA900B359E4 /* RoleStatePreClimb.h */,
 				1A3B150C1891024800B359E4 /* RoleStateClimb.cpp */,
 				1A3B150D1891024800B359E4 /* RoleStateClimb.h */,
+				1A1B64F2189253DD00374100 /* RoleStateAttack.cpp */,
+				1A1B64F3189253DD00374100 /* RoleStateAttack.h */,
 				1A1FC410188EB0FA00A9D7C0 /* Role.cpp */,
 				1A1FC411188EB0FA00A9D7C0 /* Role.h */,
 			);
@@ -1057,6 +1062,7 @@
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				1AF2AAFF189142FF008C7072 /* Utils.cpp in Sources */,
+				1A1B64F4189253DD00374100 /* RoleStateAttack.cpp in Sources */,
 				1A3B150E1891024800B359E4 /* RoleStateClimb.cpp in Sources */,
 				1A631BAD188E545E0094E80C /* GameScene.cpp in Sources */,
 				1A0F128C188EBCF5001ABB22 /* SceneController.cpp in Sources */,

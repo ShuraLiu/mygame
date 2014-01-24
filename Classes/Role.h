@@ -39,6 +39,7 @@ public:
     void moveTo(const cocos2d::Point& pos);
     void climb(Ladder* ladder, bool isClimbUp);
     void stop();
+    void attack();
     
 public:
     enum Action
@@ -126,6 +127,8 @@ public:
     {
         return mPrevState_;
     }
+    
+    cocos2d::Rect getAttackRect();
     
 private:
     bool changeState(ROLE_STATE state);
